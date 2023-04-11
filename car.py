@@ -33,6 +33,11 @@ lm = LinearRegression()
 lm.fit(X_train, y_train)
 predictions = lm.predict(X_test)
 
+
+#optional: create a scatter plot of y_test and predictions to see how accurate the model is
+plt.scatter(y_test, predictions)
+
+
 #check the accuracy
 from sklearn import metrics
 accuracy = metrics.explained_variance_score(y_test, predictions)
