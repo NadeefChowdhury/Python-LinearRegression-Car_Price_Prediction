@@ -17,7 +17,7 @@ cars3 = pd.get_dummies(cars['Seller_Type'])
 cars = pd.concat([cars, cars3], axis=1).reindex(cars.index)
 cars.drop('Seller_Type', axis=1, inplace=True)
 
-#divide the data into x and y. We're going to predict the selling price and so I have set y to selling price
+#divide the data into x and y. We're going to predict the selling price and so I have set y to selling price. I am not using the names, transmission modes and ownerships for prediction
 y = cars['Selling_Price']
 X = cars[['Year','Present_Price', 'Kms_Driven', 'CNG', 'Diesel', 'Petrol', 'Dealer',
        'Individual']]
@@ -38,7 +38,7 @@ predictions = lm.predict(X_test)
 plt.scatter(y_test, predictions)
 
 
-#check the accuracy
+#check the accuracy. The accuracy is expected to be around 71%. It could be increased if the names, transmission modes and ownerships were taken into account.
 from sklearn import metrics
 accuracy = metrics.explained_variance_score(y_test, predictions)
 print('Accuracy in percentage: ', accuracy*100, '%')
